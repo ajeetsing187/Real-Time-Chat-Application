@@ -31,7 +31,7 @@ class ChatConsumer(WebsocketConsumer):
         message = text_data_json['message']
 
         ChatModel(room_no=self.room_name, message=message).save()
-        # my first commit comment
+
         # Send message to room group using channel layers
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
